@@ -1,3 +1,18 @@
+/*
+El siguiente codigo funciona con la siguiente logica:
+1. Se usan la libreria .net de java que contiene los objectos y constructores de la clase Socket y SocketServer
+2. Se definen los metodos para:
+    a. Establecer una conexion con un equipo remoto dentro de la misma red al conocer el puerto de conexion
+    b. Se crean las funciones de flujo de datos hacia el servidor (inputStream) y hacia el cliente (outputStream)
+    c. Se crea funcion para aceptar los datos recibidos por el servidor en formato UTF. Si esta funcion, se establece la conexion pero no se aceptan los datos de entrada
+    d. Se crea funcion para enviar los datos en formato UTF al cliente
+    e. Se crea una funcion para escribir los datos, transformados en String en la consola, tipo chat.
+    f. Se crea funcion para terminar la conexion y cerrar el programa
+    g. Se crea la funcion del hilo que permite usar el metodo run, ejecutando la conexion, la recepcion/envio de datos y la escritura de los mismos en el chat
+ 3. Se establece el public static void que ejecuta las acciones
+*/
+
+//Librerias utilizadas
 import java.net.*;
 import java.io.*;
 import java.util.Scanner;
@@ -66,6 +81,13 @@ public class servidor {
         }
 
     }
+
+    public void escribirDatosChat(){
+        while(true){
+            System.out.print("[Servidor]: ");
+            enviarDatos(scanner.nextLine());
+        }
+    }
     public void terminarConexion(){
         try {
             datosEntrada.close();
@@ -76,12 +98,6 @@ public class servidor {
         }finally {
             System.out.print("Cerrando chat..");
             System.exit(0);
-        }
-    }
-    public void escribirDatosChat(){
-        while(true){
-            System.out.print("[Servidor]: ");
-            enviarDatos(scanner.nextLine());
         }
     }
 
