@@ -20,9 +20,9 @@ import java.util.Scanner;
 public class servidor {
     private Socket socket;
     private ServerSocket serverSocket;
-    private DataInputStream datosEntrada;
-    private DataOutputStream datosSalida;
-    Scanner scanner = new Scanner(System.in);
+    private DataInputStream datosEntrada=null;
+    private DataOutputStream datosSalida=null;
+    Scanner Escaner1 = new Scanner(System.in);
 
     final String FINALIZACION = "finalizar()";
 
@@ -85,7 +85,7 @@ public class servidor {
     public void escribirDatosChat(){
         while(true){
             System.out.print("[Servidor]: ");
-            enviarDatos(scanner.nextLine());
+            enviarDatos(Escaner1.nextLine());
         }
     }
     public void terminarConexion(){
