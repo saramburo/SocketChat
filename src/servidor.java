@@ -62,7 +62,7 @@ public class servidor {
                  //transforma los datos de entrada a formato UTF
                  texto= (String) datosEntrada.readUTF();
                  //escribe en consola los datos de entrada
-                 System.out.print("\n[Cliente]: "+texto);
+                 System.out.print("\n[Cliente]: "+ texto);
                  System.out.print("\n[Servidor]: ");
                  //se mantiene el chat hasta que el texto sea igual al comando de finalizacion definido arriba
              }while(!texto.equals(FINALIZACION));
@@ -101,7 +101,7 @@ public class servidor {
         }
     }
 
-    public void conectar(int puerto){
+    public void activarConexion(int puerto){
         Thread hilo =new Thread(new Runnable() {
             @Override
             public void run() {
@@ -127,7 +127,7 @@ public class servidor {
         String puerto= scanner1.nextLine();
 
         if(puerto.length()<=0) puerto ="5050";
-        servidorPrincipal.establecerConexion(Integer.parseInt(puerto));
+        servidorPrincipal.activarConexion(Integer.parseInt(puerto));
         servidorPrincipal.escribirDatosChat();
     }
 }

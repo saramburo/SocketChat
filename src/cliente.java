@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.*;
 
 public class cliente {
-    private Socket socket=null;
+    private Socket socket;
     private DataInputStream datosEntrada =null;
     private DataOutputStream datosSalida=null;
      Scanner scannerCliente= new Scanner(System.in);
@@ -41,14 +41,14 @@ public class cliente {
             System.out.print("Error IO al enviar");
         }
     }
-    public void recibirDatos() {
-        String st = "";
+    public void aceptarDatos() {
+        String texto = "";
         try {
             do {
-                st = (String) datosEntrada.readUTF();
-               System.out.print("\n[Servidor] => " + st);
+                texto = (String) datosEntrada.readUTF();
+               System.out.print("\n[Servidor] => " + texto);
                 System.out.print("\n[Usted] => ");
-            } while (!st.equals(FINALIZACION));
+            } while (!texto.equals(FINALIZACION));
         } catch (IOException e) {}
     }
 
@@ -73,7 +73,7 @@ public class cliente {
                 try{
                     establecerConexion(ip,puerto);
                     establecerFlujos();
-                    recibirDatos();
+                    aceptarDatos();
 
                 }finally {
                     terminarConexion();
@@ -84,7 +84,7 @@ public class cliente {
 
     }
 
-    public void escribirDatos() {
+    public void escribirDatosChat() {
         String textoEntrada="";
         while (true) {
             System.out.print("[Usted] => ");
@@ -105,7 +105,7 @@ public class cliente {
         String puerto = scanner1.nextLine();
         if (puerto.length() <= 0) puerto = "5050";
         cliente.activarConexion(ip, Integer.parseInt(puerto));
-        cliente.escribirDatos();
+        cliente.escribirDatosChat();
     }
 }
 
