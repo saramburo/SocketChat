@@ -20,9 +20,9 @@ import java.util.Scanner;
 public class servidor {
     private Socket socket;
     private ServerSocket serverSocket;
-    private DataInputStream datosEntrada;
-    private DataOutputStream datosSalida;
-    Scanner scanner = new Scanner(System.in);
+    private DataInputStream datosEntrada=null;
+    private DataOutputStream datosSalida=null;
+    Scanner EscanerServidor = new Scanner(System.in);
 
     final String FINALIZACION = "finalizar()";
 
@@ -60,7 +60,7 @@ public class servidor {
          try{
              do{
                  //transforma los datos de entrada a formato UTF
-                 texto= datosEntrada.readUTF();
+                 texto= (String) datosEntrada.readUTF();
                  //escribe en consola los datos de entrada
                  System.out.print("\n[Cliente]: "+texto);
                  System.out.print("\n[Servidor]: ");
@@ -85,7 +85,7 @@ public class servidor {
     public void escribirDatosChat(){
         while(true){
             System.out.print("[Servidor]: ");
-            enviarDatos(scanner.nextLine());
+            enviarDatos(EscanerServidor.nextLine());
         }
     }
     public void terminarConexion(){
@@ -109,7 +109,7 @@ public class servidor {
                     try{
                        establecerConexion(puerto);
                        flujoInformacion();
-                       escribirDatosChat();
+                       aceptarDatos();
                     }finally {
                         terminarConexion();
                     }

@@ -8,7 +8,7 @@ public class cliente {
     private Socket socket=null;
     private DataInputStream datosEntrada =null;
     private DataOutputStream datosSalida=null;
-    private Scanner scanner;
+     Scanner scannerCliente= new Scanner(System.in);
     final String FINALIZACION= "finalizar()";
     public void establecerConexion(String ip, int puerto) {
         try {
@@ -88,7 +88,7 @@ public class cliente {
         String textoEntrada="";
         while (true) {
             System.out.print("[Usted] => ");
-            textoEntrada = scanner.nextLine();
+            textoEntrada = scannerCliente.nextLine();
             if(textoEntrada.length() > 0)
                 enviarDatos(textoEntrada);
         }
