@@ -46,6 +46,7 @@ public class cliente {
         try {
             do {
                 st = (String) datosEntrada.readUTF();
+
                System.out.print("\n[Servidor] => " + st);
                 System.out.print("\n[Usted] => ");
             } while (!st.equals(FINALIZACION));
@@ -87,6 +88,7 @@ public class cliente {
     public void escribirDatos() {
         String textoEntrada="";
         while (true) {
+            System.out.print("[Servidor]: Seleccione una opcion del menu: " +"\n" +"1. Crear usuario"+"\n"+"2. Modificar Usuario"+"\n");
             System.out.print("[Usted] => ");
             textoEntrada = scannerCliente.nextLine();
             if(textoEntrada.length() > 0)
@@ -105,6 +107,7 @@ public class cliente {
         String puerto = scanner1.nextLine();
         if (puerto.length() <= 0) puerto = "5050";
         cliente.activarConexion(ip, Integer.parseInt(puerto));
+
         cliente.escribirDatos();
     }
 }
