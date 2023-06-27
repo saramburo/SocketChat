@@ -1,3 +1,5 @@
 Los siguientes vinculos sirven como bibliografía para explicar la lógica de los sockets en java
 Lógica del sistema: https://www.geeksforgeeks.org/socket-programming-in-java/
 Serverside socket: https://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html
+Métodos Socket https://www.javatpoint.com/socket-programming
+Proceso completo: https://www.baeldung.com/a-guide-to-java-sockets
